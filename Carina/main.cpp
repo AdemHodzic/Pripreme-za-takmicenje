@@ -2,7 +2,7 @@
 
 using namespace std;
 
-/*
+/**
     Pri ulasku u jednu daleku državu prtljagu će vam pregledati tri carinika, svaki u svojoj kućici. U
     kućici A, carinik će vam pregledati ručnu prtljagu. Kada pregled završi, idete dalje u kućicu B
     gdje će vam drugi carinik pregledati kofer. Kada i taj pregled završi, idete dalje u kućicu C gdje
@@ -34,7 +34,7 @@ using namespace std;
 
     Izlazni podaci
     U jedini redak ispiši traženo ukupno vrijeme.
-*/
+**/
 
 int maxInArray(int arr[], int velicina);
 

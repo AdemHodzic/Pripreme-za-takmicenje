@@ -2,8 +2,8 @@
 
 using namespace std;
 
-/*
-    Preferencijalno glasaanje je sistem u kojem građani, osim mogućnosti glasanja za određenu
+/**
+ *  Preferencijalno glasaanje je sistem u kojem građani, osim mogućnosti glasanja za određenu
     izbornu listu, mogu i zaokružiti određenog kandidata na toj listi. Ovaj sistem se koristi u Bosni
     i Hercegovini prilikom parlamentarnih izbora kao i izbore za Europski parlament. Za potrebe
     ovog zadatka, razmatramo pojednostavljenu verziju jednog aspekta sistema.
@@ -28,7 +28,7 @@ using namespace std;
     Izlazni podaci
     Ispišite niz od tačno n znakova bez razmaka — i-ti znak treba biti “1” ukoliko je kandidat i
     izabran u parlament odnosno “0” ako nije.
-*/
+ **/
 
 bool hasStepOne(int arr[],int post, int sizeArr);
 int findMaximum(int arr[], int sizeArr);
