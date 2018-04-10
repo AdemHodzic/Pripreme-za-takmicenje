@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1523358850 source:c:\users\pc2\desktop\adem cpp\kamen\main.cpp
+	<iostream>
+	<cstdlib>
+

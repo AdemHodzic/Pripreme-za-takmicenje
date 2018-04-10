@@ -48,11 +48,14 @@
 **/
 
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
-bool is_prepreka(char[][] ploca, int xPos,int yPos, int br, int bk);
-bool is_kamen(char[][] ploca, int xPos, int yPos, int br, int bk);
+bool is_free(char ploca[],int xPos, int br);
+bool is_prepreka(char ploca[], int xPos, int br);
+bool is_kamen(char ploca[], int xPos);
+bool canGoDown(char ploca[], int xPos);
 
 int main()
 {
@@ -85,7 +88,7 @@ int main()
             cout << "Pogresan unos " << endl;
             return 0;
         }
-        kamenovi[i] = temp;
+        kamenovi[i] = --temp;
     }
 
     for(int i = 0; i < kamenje ; i++){
@@ -93,32 +96,78 @@ int main()
         int xPos = 0;
         int yPos = kamenovi[i];
         while(tempBoolean){
-            cout << "Send help \n"; // U slucaju infinite loopa
-            if(is_kamen(kamenovi, xPos, yPos, br, bk)){
+            char left[br], center[br], right[br];
+            int leftInt = yPos-1;
+            int rightInt = yPos+1;
+            for(int i = 0;i<br;i++){
+                if(yPos>0){
+                    left[i] = ploca[i][leftInt];
+                }
+                if(yPos<br){
+                    right[i] = ploca[i][rightInt];
+                }
+                center[i]=ploca[i][yPos];
+            }
+            if(is_free(center, xPos, br)){
+                ++xPos;
+            }else if(is_kamen(center, xPos)){
                 //Ako je slobodno desno idi desno
                 //Ako je slobodno lijevo idi lijevo
                 //A ako nije nista slobodno onda tempBoolean = false
+                if(canGoDown(right,xPos)){
+                    ++xPos;
+                    ++yPos;
+                }else if(canGoDown(left,xPos)){
+                    ++xPos;
+                    --yPos;
+                }else{
+                    tempBoolean = false;
+                }
 
-
-            }else if(is_prepreka(kamenovi, xPos, yPos, br, bk)){
+            }else if(is_prepreka(center, xPos, br)){
                 //Zaustavi
                 tempBoolean=false;
-            }else{
-                //Onda je polje ispod prazno pa samo povecajemo yPos
             }
         }
         ploca[xPos][yPos] = 'o';
+
     }
+    //Isprintaj rijesenje
+    cout<<"\n\n\n Konacni izgled: \n";
+    for(int i = 0;i<br;i++){
+        for(int j = 0;j<bk;j++){
+            cout<<ploca[i][j];
+        }
+        cout<<endl;
+    }
+
     return 0;
 }
-
-bool is_prepreka(char[][] ploca, int xPos,int yPos, int br, int bk){
-    if(yPos == br-1)
-        return true;
-    if(ploca[xPos][++yPos]=='#')
+bool is_free(char ploca[],int xPos, int br){
+    if(xPos != br-1 && ploca[++xPos]=='.')
         return true;
     return false;
 }
 
-bool is_kamen(char[][] ploca, int xPos, int yPos, int br, int bk){
+bool is_prepreka(char ploca[], int xPos, int br){
+    if(xPos == br-1)
+        return true;
+    if(ploca[++xPos]=='#')
+        return true;
+    return false;
 }
+
+bool is_kamen(char ploca[], int xPos){
+    if(ploca[++xPos]=='o')
+        return true;
+    return false;
+}
+
+bool canGoDown(char ploca[], int xPos)
+{
+    if(ploca[xPos]=='.' && ploca[++xPos]=='.')
+        return true;
+    return false;
+}
+
+
