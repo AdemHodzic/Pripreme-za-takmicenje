@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1523439654 source:d:\pripreme-za-takmicenje\joker\main.cpp
+	<iostream>
+	<cstdlib>
+	<string>
+
