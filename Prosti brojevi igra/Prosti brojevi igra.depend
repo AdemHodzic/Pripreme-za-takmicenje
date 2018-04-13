@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1523618280 source:c:\users\pc2\desktop\adem cpp\prosti brojevi igra\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+
